@@ -36,7 +36,7 @@ end
 
 battlefield_object.onEventFinish = function(player, csid, option)
     if csid == 32001 then
-        player:addTitle(xi.title.ULMIAS_SOULMATE)
+        player:addTitle(xi.title.TRUE_COMPANION_OF_LOUVERANCE)
         player:addExp(1000)
     end
 end

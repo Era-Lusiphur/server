@@ -87,8 +87,12 @@ mission.sections =
             ['Perih_Vashai'] =
             {
                 onTrigger = function(player, npc)
-                    if player:getMissionStatus(mission.areaId, xi.mission.status.COP.LOUVERANCE) == 2 then
+                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.LOUVERANCE)
+
+                    if missionStatus == 2 then
                         return mission:event(686):importantEvent()
+                    elseif missionStatus == 3 then
+                        return mission:event(687):importantEvent()
                     end
                 end,
             },
@@ -172,6 +176,8 @@ mission.sections =
 
                 [3] = function(player, csid, option, npc)
                     player:confirmTrade()
+                    -- NOTE: This event transports you to the BCNM exit
+                    -- POS: -87.410 180 499.929 127 13
                     player:setMissionStatus(mission.areaId, 12, xi.mission.status.COP.LOUVERANCE)
                 end,
             },
@@ -199,10 +205,13 @@ mission.sections =
                 onTrigger = function(player, npc)
                     local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.LOUVERANCE)
 
-                    if missionStatus == 8 then
+                    if missionStatus == 9 then
                         return mission:progressEvent(852)
+                    -- elseif 11, (851, cidArgs, 1) importantEvent
                     elseif missionStatus == 12 then
                         return mission:progressEvent(853, getCidEventArg(player, xi.mission.status.COP.LOUVERANCE))
+                    else
+                        return mission:progressEvent(851, getCidEventArg(player, nil)):oncePerZone()
                     end
                 end,
             },
@@ -308,11 +317,17 @@ mission.sections =
 
                     if missionStatus == 3 then
                         return mission:progressEvent(74)
+                    elseif missionStatus == 5 then
+                        return mission:event(5):importantEvent()
                     elseif missionStatus == 6 then
                         return mission:event(6):importantEvent()
+                    elseif missionStatus == 8 then
+                        return mission:event(7):importantEvent()
                     end
                 end,
             },
+
+            ['Rosaline'] = mission:event(96):replaceDefault(),
 
             onEventFinish =
             {
@@ -347,13 +362,12 @@ mission.sections =
             ['qm4'] =
             {
                 onTrigger = function(player, npc)
-                    if mission:getVar(player, 'Option') == 1 then
-                        npcUtil.giveKeyItem(player, xi.ki.DELKFUTT_RECOGNITION_DEVICE)
-                        mission:setVar(player, 'Option', 0)
-
-                        return mission:noAction()
-                    elseif player:getMissionStatus(mission.areaId, xi.mission.status.COP.TENZEN) == 6 then
-                        return mission:progressEvent(0)
+                    if player:getMissionStatus(mission.areaId, xi.mission.status.COP.TENZEN) == 6 then
+                        if mission:getVar(player, 'Option') == 1 then
+                            return mission:progressEvent(1)
+                        else
+                            return mission:progressEvent(0)
+                        end
                     end
                 end,
             },
@@ -362,6 +376,11 @@ mission.sections =
             {
                 [0] = function(player, csid, option, npc)
                     mission:setVar(player, 'Option', 1)
+                end,
+
+                [1] = function(player, csid, option, npc)
+                    npcUtil.giveKeyItem(player, xi.ki.DELKFUTT_RECOGNITION_DEVICE)
+                    mission:setVar(player, 'Option', 0)
                     player:setMissionStatus(mission.areaId, 8, xi.mission.status.COP.TENZEN)
                 end,
             },
@@ -414,6 +433,8 @@ mission.sections =
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId, xi.mission.status.COP.TENZEN) == 12 then
                         return mission:progressEvent(854, getCidEventArg(player, xi.mission.status.COP.TENZEN))
+                    else
+                        return mission:progressEvent(851, getCidEventArg(player, nil)):oncePerZone()
                     end
                 end,
             },
@@ -444,8 +465,12 @@ mission.sections =
             ['Hinaree'] =
             {
                 onTrigger = function(player, npc)
-                    if player:getMissionStatus(mission.areaId, xi.mission.status.COP.ULMIA) == 0 then
+                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.ULMIA)
+
+                    if missionStatus == 0 then
                         return mission:progressEvent(22)
+                    elseif missionStatus == 2 then
+                        return mission:event(25):importantEvent()
                     end
                 end,
             },
@@ -482,8 +507,12 @@ mission.sections =
             ['Chasalvige'] =
             {
                 onTrigger = function(player, npc)
-                    if player:getMissionStatus(mission.areaId, xi.mission.status.COP.ULMIA) == 3 then
+                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.ULMIA)
+
+                    if missionStatus == 3 then
                         return mission:progressEvent(762)
+                    elseif missionStatus == 4 then
+                        return mission:event(763):importantEvent()
                     end
                 end,
             },
@@ -501,8 +530,12 @@ mission.sections =
             ['Kerutoto'] =
             {
                 onTrigger = function(player, npc)
-                    if player:getMissionStatus(mission.areaId, xi.mission.status.COP.ULMIA) == 4 then
+                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.ULMIA)
+
+                    if missionStatus == 4 then
                         return mission:progressEvent(876)
+                    elseif missionStatus == 6 then
+                        return mission:event(882):importantEvent()
                     end
                 end,
             },
@@ -520,8 +553,12 @@ mission.sections =
             ['Yoran-Oran'] =
             {
                 onTrigger = function(player, npc)
-                    if player:getMissionStatus(mission.areaId, xi.mission.status.COP.ULMIA) == 6 then
+                    local missionStatus = player:getMissionStatus(mission.areaId, xi.mission.status.COP.ULMIA)
+
+                    if missionStatus == 6 then
                         return mission:progressEvent(473)
+                    elseif missionStatus == 7 then
+                        return mission:event(479):importantEvent()
                     end
                 end,
             },
@@ -571,6 +608,8 @@ mission.sections =
                 onTrigger = function(player, npc)
                     if player:getMissionStatus(mission.areaId, xi.mission.status.COP.ULMIA) == 9 then
                         return mission:progressEvent(855, getCidEventArg(player, xi.mission.status.COP.ULMIA))
+                    else
+                        return mission:progressEvent(851, getCidEventArg(player, nil)):oncePerZone()
                     end
                 end,
             },
@@ -579,6 +618,7 @@ mission.sections =
             {
                 [855] = function(player, csid, option, npc)
                     player:setMissionStatus(mission.areaId, 14, xi.mission.status.COP.ULMIA)
+                    player:addTitle(xi.title.ULMIAS_SOULMATE)
 
                     if isMissionComplete(player) then
                         mission:complete(player)
