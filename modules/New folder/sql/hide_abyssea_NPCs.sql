@@ -1,1 +1,0 @@
-UPDATE npc_list SET `status` = '2' WHERE `content_tag` = 'ABYSSEA';
