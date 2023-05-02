@@ -1,0 +1,16 @@
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Survival Guide%'; -- Survival Guide books
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Ethereal Junction%'; -- Unity NM spawn points
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Geomagnetic Fount%'; -- Proto-Waypoint warps
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Proto-Waypoint%'; -- Proto-Waypoint warps
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Waypoint%'; -- Waypoint warps
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Planar Rift%'; -- Voidwatch NM spawn points
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Atmacite Refiner%'; -- Voidwatch NPC
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Voidwatch Purveyor%'; -- Voidwatch NPC
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Voidwatch Officer%'; -- Voidwatch NPC
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Odyssean Passage%'; -- Monstrocity - Feretory entrance
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Explorer Moogle%'; -- Event NPC
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Festive Moogle%'; -- Event NPC
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%Mystic Retriever%'; -- RoV NPC
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%A.M.A.N. Liaison%'; -- Assist Channel NPC
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%A.M.A.N. Reclaimer%'; -- Out of era ilvl gear reclaimer
+UPDATE npc_list SET `status` = '2' WHERE `polutils_name` LIKE '%A.M.A.N. Validator%'; -- Deeds NPC
